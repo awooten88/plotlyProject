@@ -1,0 +1,32 @@
+---
+title: "Michelson Speed of Light Data"
+author: "Alicia Wooten"
+date: "7/7/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Data
+In this presentation, we will look at the morley data in the R datasets package - "A classical data of Michelson (but not this one with Morley) on measurements done in 1879 on the speed of light. The data consists of five experiments, each consisting of 20 consecutive ‘runs’."  
+  
+We will plot speed vs. run number for each of the five experiments
+
+## Speed vs. Run Number
+
+```{r plot, warning=FALSE, message=FALSE}
+library(plotly)
+morley<-morley
+
+#Create labels
+x <- list(title = "Run")
+y <- list(title = "Speed")
+
+# plot
+plot_ly(data = morley, x = morley$Run, y = morley$Speed, 
+        color = as.factor(morley$Expt), mode = "lines") %>%
+  layout(xaxis = x, yaxis = y)
+```
+
